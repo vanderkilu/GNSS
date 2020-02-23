@@ -4,3 +4,11 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+const {ipcRenderer} = require('electron')
+document.getElementById('uploadBtn').addEventListener('click', ()=> {
+    ipcRenderer.send('upload-file')
+})
+ipcRenderer.on('files', (files)=> {
+    console.log(files)
+})

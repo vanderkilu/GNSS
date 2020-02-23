@@ -1,0 +1,14 @@
+html {
+    font-size: 62.5%;
+  }
+  .wrapper {
+    position: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .btn {
+    padding: 1.5rem 2rem;
+    background-color:#ffcdd2;
+    color: #b71c1c;
+  }

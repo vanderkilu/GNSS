@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain, dialog} = require('electron')
 const path = require('path')
+const {pointDifference} = require('./reader')
 
 function createWindow () {
   // Create the browser window.
@@ -8,6 +9,7 @@ function createWindow () {
     width: 800,
     height: 600,
     webPreferences: {
+      nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')
     }
   })
@@ -36,6 +38,22 @@ app.on('activate', function () {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
+
+
+
+ipcMain.on('upload-file', ()=> {
+  const options = { properties: [ 'openFile']}
+  dialog.showOpenDialog(null, options)
+    .then((fileObj) => {
+      if(fileObj !== undefined) {
+        const filePath = fileObj.filePaths[0]
+        const content = pointDifference(filePath)
+        console.log(content)
+      }
+    })
+    .catch(err => console.log(err))
+})
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
