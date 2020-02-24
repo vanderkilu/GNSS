@@ -7,6 +7,7 @@
 
 const {ipcRenderer} = require('electron')
 const btn = document.getElementById('uploadBtn')
+const btnExport = document.getElementById('exportBtn')
 const pointsElement = document.querySelector('.points-wrapper')
 
 btn.addEventListener('click', ()=> {
@@ -47,4 +48,5 @@ ipcRenderer.on('points', (_, points)=> {
     points.forEach((point)=> {
         pointsElement.appendChild(template(point.N, point.E, point.Z))
     })
+    btnExport.classList.add('show')
 })

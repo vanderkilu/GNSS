@@ -24,6 +24,11 @@ html {
     color: white;
     cursor: pointer;
   }
+  .btn-danger {
+      background-color: #ef9a9a;
+      display: none;
+      margin-top: 5rem;
+  }
   .btn:disabled {
       opacity: 0.7;
       cursor: none;
