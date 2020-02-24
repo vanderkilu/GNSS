@@ -1,16 +1,55 @@
 html {
     font-size: 62.5%;
   }
+  body {
+      background-color: #ffffff;
+  }
   .wrapper {
+    margin-top: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
   }
+  .wrapper__header {
+      font-size: 1.8rem;
+      margin-bottom: 5rem;
+      color: #212121;
+  }
   .btn {
-    padding: 1rem 2rem;
+    padding: 1.2rem 2rem;
     border: none;
-    border-radius: 5px;
-    background-color: white;
-    color: #81c784;
+    border-radius: 3px;
+    background-color:#81c784;
+    color: white;
+    cursor: pointer;
+  }
+  .btn:disabled {
+      opacity: 0.7;
+      cursor: none;
+  }
+  .points-wrapper {
+    margin-top: 5rem;
+  }
+  .points {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin-bottom: 2rem;
+  }
+  .points:nth-child(even) {
+      background-color: #e8f5e9;
+  }
+  .points__item {
+      font-size: 1.5rem;
+      color: #212121;  
+  }
+  .points__item:not(:last-child) {
+      margin-right: 2rem;
+  }
+  .points__header {
+      font-size: 2rem;
+  }
+  .show {
+      display: flex;
   }

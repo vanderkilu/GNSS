@@ -19,6 +19,19 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+  ipcMain.on('upload-file', ()=> {
+    const options = { properties: [ 'openFile']}
+    dialog.showOpenDialog(null, options)
+      .then((fileObj) => {
+        if(fileObj !== undefined) {
+          const filePath = fileObj.filePaths[0]
+          mainWindow.send('filename', fileName(filePath))
+          const content = pointDifference(filePath)
+          mainWindow.send('points', content)
+        }
+      })
+      .catch(err => console.log(err))
+  })
 }
 
 // This method will be called when Electron has finished
@@ -40,19 +53,12 @@ app.on('activate', function () {
 })
 
 
+const fileName = (filePath) => {
+  return path.basename(filePath)
+}
 
-ipcMain.on('upload-file', ()=> {
-  const options = { properties: [ 'openFile']}
-  dialog.showOpenDialog(null, options)
-    .then((fileObj) => {
-      if(fileObj !== undefined) {
-        const filePath = fileObj.filePaths[0]
-        const content = pointDifference(filePath)
-        console.log(content)
-      }
-    })
-    .catch(err => console.log(err))
-})
+
+
 
 
 // In this file you can include the rest of your app's specific main process
