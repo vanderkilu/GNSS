@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
     <title>GNSS(GLOBAL NAVIGATION SATELITE SYSTEM)</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./main.css" />
   </head>
   <body>
     <div class="wrapper">
-      <h3 class="wrapper__header">Welcome to GNSS, upload an excel file to start processing </h3>
+      <h3 class="wrapper__header">
+        Welcome to GNSS, upload an excel file to start processing
+      </h3>
       <button class="btn" id="uploadBtn">Upload File</button>
       <button class="btn btn-danger" id="exportBtn">Export To Excel</button>
-      <div class="points-wrapper">
-      </div>
+      <button class="btn" id="uploadFilteredBtn">Upload Filtered File</button>
+      <button class="btn btn-danger" id="exportFilteredBtn">
+        Export Filteredd File
+      </button>
+      <div class="points-wrapper"></div>
     </div>
     <script src="./renderer.js"></script>
   </body>
