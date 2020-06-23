@@ -39,7 +39,7 @@ function createWindow() {
   });
 
   ipcMain.on("export-file", () => {
-    exportToSheet("SHEET_JSON_NORMAL", "processed.xlsx");
+    exportToSheet("SHEET_JSON_NORMAL", "difference.xlsx");
   });
 
   ipcMain.on("upload-filter-file", () => {
@@ -57,7 +57,7 @@ function createWindow() {
   });
 
   ipcMain.on("export-filter-file", () => {
-    exportToSheet("EXPORT_SHEET_JSON", "processedFiltered.xlsx");
+    exportToSheet("EXPORT_SHEET_JSON", "processed.xlsx");
   });
 }
 
