@@ -5,6 +5,8 @@
 
 ```git clone <repo>```
 
-``git install``
+```cd GNSS```
+
+``npm install``
 
 ```npm run start```
