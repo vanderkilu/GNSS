@@ -14,9 +14,9 @@ const pointDifference = filename => {
   sheetJSON.forEach((row, i) => {
     if (i !== 0) {
       const diffObj = {
+        ID: "P" + (i + 1),
         N: row["UNPROCESSED(U)"] - row["PROCESSED DATASET(P)"],
-        E: row["__EMPTY_4"] - row["__EMPTY_1"],
-        Z: row["__EMPTY_5"] - row["__EMPTY_2"]
+        E: row["__EMPTY_4"] - row["__EMPTY_1"]
       };
       final.push(diffObj);
     }
@@ -33,8 +33,9 @@ const pointFilteredDifference = filename => {
   final = [];
   sheetJSON.forEach((row, i) => {
     const diffObj = {
-      N: row["N/m"] - 29.80707,
-      E: row["E/m"] + 6.14656
+      ID: "P" + (i + 1),
+      "N/m": row["N/m"] - 29.80707,
+      "E/m": row["E/m"] + 6.14656
     };
     final.push(diffObj);
   });

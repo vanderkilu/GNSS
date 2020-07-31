@@ -11,9 +11,12 @@ const btnExport = document.getElementById("exportBtn");
 const pointsElement = document.querySelector(".points-wrapper");
 const btnFilteredUpload = document.getElementById("uploadFilteredBtn");
 const btnFilteredExport = document.getElementById("exportFilteredBtn");
+const h3 = document.querySelector("h3");
+const h2 = document.querySelector("h2");
 
 btn.addEventListener("click", () => {
   ipcRenderer.send("upload-file");
+  h3.remove();
 });
 
 btnExport.addEventListener("click", () => {
@@ -22,6 +25,10 @@ btnExport.addEventListener("click", () => {
 
 btnFilteredUpload.addEventListener("click", () => {
   ipcRenderer.send("upload-filter-file");
+  h2.remove();
+  h3.remove();
+  btnFilteredUpload.remove();
+  btnExport.remove();
 });
 btnFilteredExport.addEventListener("click", () => {
   ipcRenderer.send("export-filter-file");
@@ -32,11 +39,10 @@ ipcRenderer.on("filename", (_, filename) => {
   btn.innerText = filename;
 });
 
-const template = (N, E, Z) => {
+const template = (N, E) => {
   const innerTemplate = `
         <p class="points__north points__item">${N}</p>
         <p class="points__east points__item">${E}</p>
-        <p class="points__zee points__item">${Z}</p>
     `;
   const div = document.createElement("div");
   div.className = "points";
@@ -46,9 +52,8 @@ const template = (N, E, Z) => {
 
 const templateHeader = () => {
   const template = `
-        <h3 class="points__header points__item">Northings</h3>
-        <h3 class="points__header points__item">Eastings</h3>
-        <h3 class="points__header points__item">Zees</h3>
+        <h3 class="points__header points__item">N/m</h3>
+        <h3 class="points__header points__item">E/m</h3>
     `;
   const div = document.createElement("div");
   div.className = "points";

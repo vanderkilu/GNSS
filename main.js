@@ -49,6 +49,7 @@ function createWindow() {
       .then(fileObj => {
         if (fileObj !== undefined) {
           const filePath = fileObj.filePaths[0];
+          mainWindow.send("filename", fileName(filePath));
           pointFilteredDifference(filePath);
           mainWindow.send("show-btn");
         }
