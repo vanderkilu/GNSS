@@ -24,7 +24,7 @@
     "electron-builder": "^22.8.0"
   },
   "dependencies": {
-    "xlsx": "^0.15.5"
+    "xlsx": "^0.17.0"
   },
   "build": {
     "appId": "GNSS",
